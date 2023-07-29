@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="shape">
+        <br>
+        <h1><center>Shape Generator</center></h1>
+        <br>
+        <br>
+        <p id="para1">Select shape,color and number of shapes</p>
+        <br>
+        <div>
+            <input type="radio" name="name" value="circle" id="circle" checked > Circle<br>
+            <input type="radio" name="name" value="rectangle" id="rectangle"> Rectange<br>
+            <input type="radio" name="name" value="square" id="square"> Square
+        </div>
+        <br>
+        <div>
+            <input type="color" id="color" style="border-radius: 5px;"> Select the color
+        </div>
+        <br>
+        <div>
+            <input type="number" id="number" name="sh"><br><br>
+            <button id="button">Shapes to be displayed</button>
+        </div>
+        <br><br>
+    </div>
+    <div class="display">
+        <div class="box" id="box"></div>
+    </div>
+    <script>
+        let button = document.getElementById("button");
+var numberInTheShape = 1;
+var oldValue = 0;
+
+button.onclick = () => {
+  let n = document.getElementById("number").value;
+  let a = document.getElementById("color").value;
+  const circle = document.getElementById("circle");
+  const square = document.getElementById("square");
+  const rect = document.getElementById("rectangle");
+  const box = document.getElementById("box");
+  let j;
+  n = Number(oldValue) + Number(n);
+  for (let j = numberInTheShape; j <= n; j++) {
+    var shape = document.createElement("div");
+    shape.innerHTML += numberInTheShape;
+    if (square.checked) {
+      shape.classList.add("square");
+      shape.style.backgroundColor=a;
+    } 
+    else if (circle.checked) {
+      shape.classList.add("circle");
+      shape.style.backgroundColor=a;
+    } 
+    else if (rect.checked) {
+      shape.classList.add("rectangle");
+      shape.style.backgroundColor=a;
+    } 
+    else {
+      document.write("invalid Input");
+    }
+    box.appendChild(shape);
+    numberInTheShape++;
+    oldValue = document.getElementById("box").lastElementChild.innerHTML;
+  }
+};
+    </script>
+</body>
+</html>
